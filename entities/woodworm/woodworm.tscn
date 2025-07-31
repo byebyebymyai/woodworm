@@ -1,0 +1,156 @@
+[gd_scene load_steps=13 format=4 uid="uid://bl2ar25weo4sp"]
+
+[ext_resource type="Script" uid="uid://4q7m8m74ejco" path="res://entities/woodworm/woodworm.gd" id="1_vm4xr"]
+[ext_resource type="Script" uid="uid://b8x8rmtgyhook" path="res://entities/woodworm/woodworm_tail_node.gd" id="2_vm4xr"]
+[ext_resource type="SpriteFrames" uid="uid://c137jk2avryaq" path="res://entities/woodworm/assets/ase/head.aseprite" id="3_bn6wq"]
+[ext_resource type="Script" uid="uid://cixvb5pp715g" path="res://entities/woodworm/woodworm_body_node.gd" id="4_bn6wq"]
+[ext_resource type="Script" uid="uid://cr3q7gs0hdmep" path="res://entities/woodworm/woodworm_head_node.gd" id="5_xx25x"]
+[ext_resource type="SpriteFrames" uid="uid://d0f808ykdjnvv" path="res://entities/woodworm/assets/ase/tail.aseprite" id="7_ii1vc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vij2d"]
+size = Vector2(32, 32)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_vm4xr"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAAAUAQAAUklGRgwBAABXRUJQVlA4TP8AAAAvP8APEE+gqJEUhl4sYIAgBv288KW2jSTlUobs7rHnb/jVNJICXXkHdvBv6q0g8x8AkOh1kSNtrrLT9ebKvfA/AXIDsHEbjkDukEWIcATTSAYotYBQTWBAHeDSvE149O4vov8TQGEAACSvhAEAicWpYQAkEXXOMADJpsfMB+RNZyWQ6Kzh7ahB1lkkRxFtdbOY67Ts+GmtsOdt5XrWTQ073pbmeq43LOyzVNfD13T+cCMceRwSDgmFQycAAHRBJhKLMwNJZDgzSPpodj8BuQ/zJpAMq+HeapCHFUkrot7MdnVmmJlWcDfbdTkThtn+XNLePc37/y/nL+aiZVJ2igEA")
+size_override = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn6wq"]
+atlas = SubResource("PortableCompressedTexture2D_vm4xr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx25x"]
+atlas = SubResource("PortableCompressedTexture2D_vm4xr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii1vc"]
+atlas = SubResource("PortableCompressedTexture2D_vm4xr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jco4h"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn6wq")
+}],
+"loop": true,
+"name": &"alt-1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx25x")
+}],
+"loop": true,
+"name": &"alt-2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii1vc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vm4xr")
+
+[node name="Tail" type="CharacterBody2D" parent="."]
+position = Vector2(-64, 0)
+collision_layer = 4
+collision_mask = 7
+platform_floor_layers = 4294901761
+platform_wall_layers = 2
+script = ExtResource("2_vm4xr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tail"]
+sprite_frames = ExtResource("7_ii1vc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tail"]
+shape = SubResource("RectangleShape2D_vij2d")
+
+[node name="GravityRayCast" type="RayCast2D" parent="Tail"]
+target_position = Vector2(0, 32)
+
+[node name="LeftWallRayCast" type="RayCast2D" parent="Tail"]
+target_position = Vector2(-32, 0)
+collision_mask = 34
+
+[node name="RightWallRayCast" type="RayCast2D" parent="Tail"]
+target_position = Vector2(32, 0)
+collision_mask = 34
+
+[node name="Body" type="CharacterBody2D" parent="."]
+position = Vector2(-32, 0)
+collision_layer = 4
+collision_mask = 7
+platform_floor_layers = 4294901761
+platform_wall_layers = 2
+script = ExtResource("4_bn6wq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jco4h")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"should_round_fps": false,
+"slice": "",
+"source": "res://entities/woodworm/assets/ase/body.aseprite",
+"source_uid": 1376209130135622567
+}
+metadata/_aseprite_wizard_source_file_hash_ = "85a3578dad1b1eaebabe73841a684f58"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("RectangleShape2D_vij2d")
+
+[node name="GravityRayCast" type="RayCast2D" parent="Body"]
+target_position = Vector2(0, 32)
+
+[node name="LeftWallRayCast" type="RayCast2D" parent="Body"]
+target_position = Vector2(-32, 0)
+collision_mask = 34
+
+[node name="RightWallRayCast" type="RayCast2D" parent="Body"]
+target_position = Vector2(32, 0)
+collision_mask = 34
+
+[node name="Head" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+platform_floor_layers = 4294901761
+platform_wall_layers = 2
+script = ExtResource("5_xx25x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head"]
+sprite_frames = ExtResource("3_bn6wq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource("RectangleShape2D_vij2d")
+
+[node name="RayCast2D" type="RayCast2D" parent="Head"]
+target_position = Vector2(32, 0)
+
+[node name="GravityRayCast" type="RayCast2D" parent="Head"]
+target_position = Vector2(0, 32)
+
+[node name="LeftWallRayCast" type="RayCast2D" parent="Head"]
+target_position = Vector2(-32, 0)
+collision_mask = 34
+
+[node name="RightWallRayCast" type="RayCast2D" parent="Head"]
+target_position = Vector2(32, 0)
+collision_mask = 34

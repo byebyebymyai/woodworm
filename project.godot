@@ -1,0 +1,54 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="woodworm"
+run/main_scene="uid://c7n43sjsyo7ui"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[aseprite]
+
+import/import_plugin/default_automatic_importer="SpriteFrames"
+
+[autoload]
+
+GridConfig="*res://config/grid_config.gd"
+LevelProgressManager="*res://scenes/level_select/level_progress_manager.gd"
+CollisionLayers="*res://config/collision_layers.gd"
+TileConfig="*res://config/tile_config.gd"
+
+[display]
+
+window/size/viewport_width=768
+window/size/viewport_height=448
+window/size/window_width_override=1536
+window/size/window_height_override=896
+window/stretch/mode="canvas_items"
+window/per_pixel_transparency/allowed=true
+
+[dotnet]
+
+project/assembly_name="woodworm"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/strings.en.translation", "res://translations/strings.zh_CN.translation")
+locale/fallback="zh_CN"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true

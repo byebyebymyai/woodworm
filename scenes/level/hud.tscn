@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://drqbv5c3igdj3"]
+
+[ext_resource type="Texture2D" uid="uid://cn3jh0md4dnkl" path="res://assets/ui/back.png" id="1_0ql43"]
+[ext_resource type="Texture2D" uid="uid://ctyafth31tjol" path="res://assets/ui/reset.png" id="1_ga13h"]
+[ext_resource type="Texture2D" uid="uid://dj6j3bnjrc3u8" path="res://assets/ui/setting.png" id="2_375fe"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_right = 384.0
+offset_bottom = 136.0
+grow_horizontal = 2
+size_flags_vertical = 0
+alignment = 2
+
+[node name="Reset" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("1_ga13h")
+flat = true
+
+[node name="Setting" type="Button" parent="HFlowContainer"]
+visible = false
+layout_mode = 2
+icon = ExtResource("2_375fe")
+flat = true
+
+[node name="Back" type="Button" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+icon = ExtResource("1_0ql43")
+flat = true
