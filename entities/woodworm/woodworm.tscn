@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://bl2ar25weo4sp"]
 
-[ext_resource type="Script" uid="uid://4q7m8m74ejco" path="res://entities/woodworm/woodworm.gd" id="1_vm4xr"]
+[ext_resource type="Script" uid="uid://2h7ufr5pigqk" path="res://entities/woodworm/woodworm.gd" id="1_vm4xr"]
 [ext_resource type="Script" uid="uid://b8x8rmtgyhook" path="res://entities/woodworm/woodworm_tail_node.gd" id="2_vm4xr"]
 [ext_resource type="SpriteFrames" uid="uid://c137jk2avryaq" path="res://entities/woodworm/assets/ase/head.aseprite" id="3_bn6wq"]
 [ext_resource type="Script" uid="uid://cixvb5pp715g" path="res://entities/woodworm/woodworm_body_node.gd" id="4_bn6wq"]
